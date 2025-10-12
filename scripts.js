@@ -53,7 +53,7 @@ async function printAllCategories() {
  */
 async function printNumInCategory(id) {
 
-    if (!Number.isInteger(id)) {
+    if (Number.isNaN(parseInt(id))) {
         console.error("Must provide a numerical category ID.");
         return;
     }
