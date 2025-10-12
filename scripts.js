@@ -52,5 +52,26 @@ async function printAllCategories() {
  * @param {int} id The ID of the category whose size is being requested
  */
 async function printNumInCategory(id) {
-    
+    try {
+        const response = await fetch(`http://quiz-game-backend-5gpd.onrender.com/categorySize/${id}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        const data = await response.json();
+        if (data.error === undefined) {
+            // means that category size was properly returned
+            const counts = data.category_question_count;
+            const numEasy = counts.total_easy_question_count;
+            const numMedium = counts.total_medium_question_count;
+            const numHard = counts.total_hard_question_count;
+            const total = counts.total_question_count;
+            console.log(`Easy: ${numEasy}\nMedium: ${numMedium}\nHard: ${numHard}\nTotal: ${total}`);
+        } else {
+            throw new Error("Failed to fetch category by ID.");
+        }
+    } catch (error) {
+        console.error(`Error fetching size of category with ID ${id}`);
+    }
 }
