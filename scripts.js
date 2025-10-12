@@ -53,7 +53,7 @@ async function printAllCategories() {
  */
 async function printNumInCategory(id) {
     try {
-        const response = await fetch(`http://quiz-game-backend-5gpd.onrender.com/categorySize/${id}`, {
+        const response = await fetch(`https://quiz-game-backend-5gpd.onrender.com/categorySize/${id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
