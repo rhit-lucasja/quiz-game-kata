@@ -6,8 +6,8 @@ async function test() {// jService - Trivia API API Example
         }
     });
 
-    const data = await response.json();
-    console.log(data);
+    console.log(`OpenTDB API response has code ${response.response_code}`);
+    console.log(response);
 }
 
 test();
