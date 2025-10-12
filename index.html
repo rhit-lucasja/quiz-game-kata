@@ -8,8 +8,17 @@
 
     <body>
         <header>
-            <b>Welcome to the Quiz Show!</b>
+            <b><i>Life, Liberty, and the Pursuit of Trivia</i></b>
         </header>
+
+        <div>
+            <button onclick="printAllCategories()">Print All Categories</button>
+        </div>
+
+        <div>
+            <button onclick="printNumInCategory(document.getElementById('categoryInput').value)">Get Number of Questions in Category</button>
+            <input id="categoryInput" type="text">
+        </div>
 
 
     </body>
