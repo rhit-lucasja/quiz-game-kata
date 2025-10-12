@@ -52,6 +52,12 @@ async function printAllCategories() {
  * @param {int} id The ID of the category whose size is being requested
  */
 async function printNumInCategory(id) {
+
+    if (!Number.isInteger(id)) {
+        console.error("Must provide a numerical category ID.");
+        return;
+    }
+
     try {
         const response = await fetch(`https://quiz-game-backend-5gpd.onrender.com/categorySize/${id}`, {
             method: 'GET',
