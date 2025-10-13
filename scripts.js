@@ -81,3 +81,40 @@ async function printNumInCategory(id) {
         console.error(`Error fetching size of category with ID ${id}`);
     }
 }
+
+
+/**
+ * Fetches the names and IDs of all the categories in OpenTDB. Then constructs a menu on the index page
+ *   so that you can select a topic to take a quiz on.
+ */
+async function setupCategoryList() {
+    try {
+        const response = await fetch('https://quiz-game-backend-5gpd.onrender.com/allCategories', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        const data = await response.json();
+
+        // if data received has an "error" field, then the server had a problem
+        if (data.error) {
+            throw new Error("Server had an error with message: " + data.error);
+        }
+
+        // get the select menu element from HTML
+        //   add an option for each category, with the value as its ID
+        selection = document.getElementById("selectCategory");
+        for (const entry of data.trivia_categories) {
+            op = document.createElement("option");
+            op.value = entry.id;
+            op.textContent = entry.name;
+        }
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+
+// entry point - set up the list of categories to choose a quiz on
+setupCategoryList();
