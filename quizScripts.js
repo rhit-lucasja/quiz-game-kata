@@ -82,6 +82,10 @@ async function getMaxNumQuestions(catID) {
 }
 
 
+/**
+ * 
+ * 
+ */
 async function setupNumQuestions() {
 
     // get the URL search parameter for category ID as string
@@ -102,6 +106,16 @@ async function setupNumQuestions() {
     }
     if (max > 50) max = 50; // cap quiz length at 50 questions
     setupNumList(max, selection);
+
+}
+
+
+/**
+ * 
+ * 
+ * @param {string} strNumQuestions number of questions to get for the quiz, as a string initially
+ */
+async function generateQuizQuestions(strNumQuestions) {
 
 }
 
