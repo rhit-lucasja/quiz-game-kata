@@ -84,7 +84,7 @@ async function getMaxNumQuestions(catID) {
 }
 
 
-function setupNumQuestions() {
+async function setupNumQuestions() {
 
     // get the URL search parameter for category ID as string
     const params = new URLSearchParams(window.location.search);
@@ -96,11 +96,11 @@ function setupNumQuestions() {
 
     if (Number.isNaN(catID)) {
         // NaN catID was provided - so default to choosing questions from anywhere
-        const max = getMaxNumQuestionsAnyCategory();
+        const max = await getMaxNumQuestionsAnyCategory();
         setupNumQuestions(max, selection);
     } else {
         // parse argument strID as an integer catID
-        const max = getMaxNumQuestions(catID);
+        const max = await getMaxNumQuestions(catID);
         setupNumQuestions(max, selection);
     }
 
