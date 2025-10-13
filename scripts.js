@@ -110,6 +110,8 @@ async function setupCategoryList() {
             op.value = entry.id;
             op.textContent = entry.name;
         }
+        console.log("Category selection menu set up successfully");
+
     } catch (error) {
         console.error(error);
     }
