@@ -130,7 +130,7 @@ function reloadWithQuizParam() {
     const catID = params.catID;
 
     // redirect to page with catID and number of questions
-    window.location.href = `https://quiz-game-kata.vercel.app/quiz?catID=${catID}&num=${numQuestions}`;
+    window.location.href = `https://quiz-game-kata.vercel.app/quiz.html?catID=${catID}&num=${numQuestions}`;
 
 }
 
