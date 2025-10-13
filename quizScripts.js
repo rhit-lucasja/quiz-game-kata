@@ -4,7 +4,7 @@
 function getCategoryID() {
 
     // get the URL search parameter for category ID as string
-    const params = URLSearchParams(window.location.search);
+    const params = new URLSearchParams(window.location.search);
     const strID = params.get("catID");
     if (!strID || strID === "any") {
         // argument was not provided - so default to any category works
