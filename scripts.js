@@ -114,7 +114,28 @@ async function setupCategoryList() {
         console.log("Category selection menu set up successfully");
 
     } catch (error) {
+        selection = document.getElementById("selectCategory");
+        op = document.createElement("option");
+        op.value = "err";
+        op.textContent = "Something went wrong. Refresh to try again.";
+        selection.appendChild(op);
         console.error(error);
+    }
+}
+
+
+/**
+ * Redirects to the quiz page to generate a quiz on the selected category, using the given category ID as a string strID
+ * 
+ * @param {string} strID the chosen category's ID as a string, "any" if no selection, "err" if problem generating category list
+ */
+function goToQuiz(strID) {
+    if (strID === "err") {
+        alert("Something went wrong with the chosen category.");
+        location.reload(); // refresh the page because error
+    } else {
+        // otherwise redirect to quiz creation page - next step is to ask how long of a quiz
+        window.location.href = `https://quiz-game-kata.vercel.app/quiz.html?catID=${strID}`;
     }
 }
 
