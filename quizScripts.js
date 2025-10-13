@@ -141,6 +141,48 @@ function reloadWithQuizParam() {
  */
 async function generateQuiz() {
 
+    // get parameters from URL for the category (or "any") and for the number of questions, and use them to load a quiz
+    //   due to this design, reloading the page will generate a new quiz every time
+    const params = new URLSearchParams(window.location.search);
+    const catID = params.get("catID");
+    const numQuestionsStr = params.get("numQuestions");
+    if (!numQuestionsStr) {
+        // no numQuestions parameter is provided - so skip the quiz generation and wait for a selection to be made
+        return;
+    }
+
+    const numQuestions = parseInt(numQuestionsStr);
+    if (Number.isNaN(numQuestions) || numQuestions < 1 || numQuestions > 50) {
+        // error converting the parameter into a valid number within API's bounds
+        console.error("Error: number of questions provided is not a number within API bounds (number of questions to retrieve must be between 1 and 50).");
+        return;
+    }
+
+    // else call API to get numQuestions questions of the category given by catID (or from any category if "any")
+    let data;
+    if (catID === "any") {
+        // pull questions from any category
+        const response = await fetch(`https://quiz-game-backend-5gpd.onrender.com/getQuestions/${numQuestions}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        data = await response.json();
+    } else {
+        // pull questions from category given by catID
+        const response = await fetch(`https://quiz-game-backend-5gpd.onrender.com/getQuestions/${catID}/${numQuestions}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        data = await response.json();
+    }
+
+    // handle response code properly in case of errors, then append questions to the quiz page
+
+
 }
 
 
