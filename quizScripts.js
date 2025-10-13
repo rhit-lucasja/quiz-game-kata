@@ -11,7 +11,7 @@ function setupNumQuestions(maxNum, selection) {
     for (i = 2; i <= maxNum / 10; i++) {
         op = document.createElement("option");
         op.value = i * 10;
-        op.textContent = i * 10;
+        op.textContent = `${i * 10} Questions`;
         selection.appendChild(op);
     }
 }
@@ -102,3 +102,6 @@ function setupNumQuestions() {
 
 }
 
+
+// entry point to set up num questions list once DOM loads
+setupNumQuestions();
