@@ -40,11 +40,12 @@ async function getMaxNumQuestionsAnyCategory() {
         // return the maximum number of questions to choose (the largest multiple of 10 <= numQuestions)
         const numQuestions = data.total_num_of_verified_questions;
         return numQuestions - (numQuestions % 10);
+
     } catch (error) {
         // upon error, alert the user and return to category selection (index) page
         console.error(`Error fetching size of chosen category. Redirecting to home page...`);
-        window.location.href = 'https://quiz-game-kata.vercel.app/index.html';
-        return 0;
+        console.error(error);
+        //window.location.href = 'https://quiz-game-kata.vercel.app/index.html';
     }
 }
 
@@ -73,11 +74,12 @@ async function getMaxNumQuestions(catID) {
         // return the maximum number of questions to choose (the largest multiple of 10 <= numQuestions)
         const numQuestions = data.category_question_count.total_question_count;
         return numQuestions - (numQuestions % 10);
+
     } catch (error) {
         // upon error, alert the user and return to category selection (index) page
         console.error(`Error fetching size of chosen category. Redirecting to home page...`);
-        window.location.href = 'https://quiz-game-kata.vercel.app/index.html';
-        return 0;
+        console.error(error);
+        //window.location.href = 'https://quiz-game-kata.vercel.app/index.html';
     }
 }
 
