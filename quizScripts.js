@@ -83,7 +83,7 @@ async function getMaxNumQuestions(catID) {
 
 
 /**
- * 
+ * Sets up the selection menu for the number of questions to put on the new quiz, given a catID in the URL search
  * 
  */
 async function setupNumQuestions() {
@@ -111,14 +111,34 @@ async function setupNumQuestions() {
 
 
 /**
+ * Reloads the web page, adding a parameter to the URL corresponding to the number of questions chosen in the
+ * selection menu.
  * 
- * 
- * @param {string} strNumQuestions number of questions to get for the quiz, as a string initially
  */
-async function generateQuizQuestions(strNumQuestions) {
+function reloadWithQuizParam() {
+
+    // get the <select> element in order to add num questions options to it
+    const selection = document.getElementById("selectNumQuestions");
+    let numQuestions = parseInt(selection.value);
+    if (Number.isNaN(numQuestions)) {
+        // NaN selection for number of quiz questions - for now default to 10
+        numQuestions = 10;
+    }
+
+    window.location.href = window.location.search + `&num=${numQuestions}`;
+
+}
+
+
+/**
+ * Generates the quiz upon page setup, as long as the URL contains a parameter for number of questions
+ * 
+ */
+async function generateQuiz() {
 
 }
 
 
 // entry point to set up num questions list once DOM loads
 setupNumQuestions();
+generateQuiz();
