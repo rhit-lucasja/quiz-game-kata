@@ -7,8 +7,8 @@
  * @param {Element} selection 
  */
 function setupNumQuestions(maxNum, selection) {
-    // for each multiple of 10 in [20, maxNum], add an option to <select> reference given
-    for (i = 2; i <= maxNum / 10; i++) {
+    // for each multiple of 10 in [20, min(maxNum, 50)], add an option to <select> reference given
+    for (i = 2; i <= maxNum / 10 && i <= 5; i++) {
         op = document.createElement("option");
         op.value = i * 10;
         op.textContent = `${i * 10} Questions`;
@@ -97,6 +97,7 @@ async function setupNumQuestions() {
     if (Number.isNaN(catID)) {
         // NaN catID was provided - so default to choosing questions from anywhere
         const max = await getMaxNumQuestionsAnyCategory();
+        console.log("done");
         setupNumQuestions(max, selection);
     } else {
         // parse argument strID as an integer catID
