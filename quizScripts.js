@@ -1,23 +1,6 @@
 
 
 /**
- * Given a multiple of 10 maxNum and a reference to a <select> element, adds options
- * 20, 30, ... maxNum to the selection menu
- * @param {int} maxNum 
- * @param {Element} selection 
- */
-function setupNumQuestions(maxNum, selection) {
-    // for each multiple of 10 in [20, min(maxNum, 50)], add an option to <select> reference given
-    for (i = 2; i <= maxNum / 10 && i <= 5; i++) {
-        op = document.createElement("option");
-        op.value = i * 10;
-        op.textContent = `${i * 10} Questions`;
-        selection.appendChild(op);
-    }
-}
-
-
-/**
  * Returns the int number of questions in any category in OpenTDB
  * 
  * @returns integer number of questions from any category
@@ -96,13 +79,26 @@ async function setupNumQuestions() {
 
     if (Number.isNaN(catID)) {
         // NaN catID was provided - so default to choosing questions from anywhere
-        const max = await getMaxNumQuestionsAnyCategory();
-        console.log("done");
-        setupNumQuestions(max, selection);
+        const maxNum = await getMaxNumQuestionsAnyCategory();
+        // for each multiple of 10 in [20, min(maxNum, 50)], add an option to <select> reference given
+        for (i = 2; i <= maxNum / 10 && i <= 5; i++) {
+            op = document.createElement("option");
+            op.value = i * 10;
+            op.textContent = `${i * 10} Questions`;
+            selection.appendChild(op);
+        }
+        console.log("Added to select menu");
     } else {
         // parse argument strID as an integer catID
-        const max = await getMaxNumQuestions(catID);
-        setupNumQuestions(max, selection);
+        const maxNum = await getMaxNumQuestions(catID);
+        // for each multiple of 10 in [20, min(maxNum, 50)], add an option to <select> reference given
+        for (i = 2; i <= maxNum / 10 && i <= 5; i++) {
+            op = document.createElement("option");
+            op.value = i * 10;
+            op.textContent = `${i * 10} Questions`;
+            selection.appendChild(op);
+        }
+        console.log("Added to select menu");
     }
 
 }
