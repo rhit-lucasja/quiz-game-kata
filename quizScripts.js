@@ -70,7 +70,7 @@ async function getMaxNumQuestions(catID) {
         }
 
         // return the maximum number of questions to choose (the largest multiple of 10 <= numQuestions)
-        const numQuestions = data.total_num_of_verified_questions;
+        const numQuestions = data.category_question_count.total_question_count;
         return numQuestions - (numQuestions % 10);
     } catch (error) {
         // upon error, alert the user and return to category selection (index) page
