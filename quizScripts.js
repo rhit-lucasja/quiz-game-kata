@@ -8,7 +8,7 @@
  */
 function setupNumList(maxNum, selection) {
     // for each multiple of 10 in [20, min(maxNum, 50)], add an option to <select> reference given
-    for (i = 2; i <= maxNum / 10 && i <= 5; i++) {
+    for (i = 2; i <= maxNum / 10; i++) {
         op = document.createElement("option");
         op.value = i * 10;
         op.textContent = `${i * 10} Questions`;
@@ -84,7 +84,7 @@ async function getMaxNumQuestions(catID) {
 }
 
 
-function setupNumQuestions() {
+async function setupNumQuestions() {
 
     // get the URL search parameter for category ID as string
     const params = new URLSearchParams(window.location.search);
@@ -94,15 +94,16 @@ function setupNumQuestions() {
     // get the <select> element in order to add num questions options to it
     const selection = document.getElementById("selectNumQuestions");
 
+    let max = 0;
     if (Number.isNaN(catID)) {
         // NaN catID was provided - so default to choosing questions from anywhere
-        const max = getMaxNumQuestionsAnyCategory();
-        setupNumList(max, selection);
+        max = await getMaxNumQuestionsAnyCategory();
     } else {
         // parse argument strID as an integer catID
-        const max = getMaxNumQuestions(catID);
-        setupNumList(max, selection);
+        max = await getMaxNumQuestions(catID);
     }
+    if (max > 50) max = 50; // cap quiz length at 50 questions
+    setupNumList(max, selection);
 
 }
 
