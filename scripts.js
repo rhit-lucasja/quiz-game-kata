@@ -109,6 +109,7 @@ async function setupCategoryList() {
             op = document.createElement("option");
             op.value = entry.id;
             op.textContent = entry.name;
+            selection.appendChild(op);
         }
         console.log("Category selection menu set up successfully");
 
