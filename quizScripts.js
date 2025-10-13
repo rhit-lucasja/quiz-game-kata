@@ -45,7 +45,6 @@ async function getMaxNumQuestionsAnyCategory() {
         // upon error, alert the user and return to category selection (index) page
         console.error(`Error fetching size of chosen category. Redirecting to home page...`);
         console.error(error);
-        //window.location.href = 'https://quiz-game-kata.vercel.app/index.html';
     }
 }
 
@@ -79,7 +78,6 @@ async function getMaxNumQuestions(catID) {
         // upon error, alert the user and return to category selection (index) page
         console.error(`Error fetching size of chosen category. Redirecting to home page...`);
         console.error(error);
-        //window.location.href = 'https://quiz-game-kata.vercel.app/index.html';
     }
 }
 
