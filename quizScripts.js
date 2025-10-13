@@ -125,7 +125,12 @@ function reloadWithQuizParam() {
         numQuestions = 10;
     }
 
-    window.location.href = window.location.search + `&num=${numQuestions}`;
+    // get category ID being used as well to form a collective URL query
+    const params = new URLSearchParams(window.location.search);
+    const catID = params.catID;
+
+    // redirect to page with catID and number of questions
+    window.location.href = `https://quiz-game-kata.vercel.app/quiz?catID=${catID}&num=${numQuestions}`;
 
 }
 
