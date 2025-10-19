@@ -230,7 +230,7 @@ function addQuizToPage(questions) {
     const submit = document.createElement("button");
     submit.onclick = "submitAnswers()";
     submit.textContent = "Submit";
-    quizContainer.add(submit);
+    quizContainer.appendChild(submit);
 
 }
 
