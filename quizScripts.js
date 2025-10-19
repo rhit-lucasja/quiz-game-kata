@@ -324,7 +324,7 @@ async function generateQuiz() {
 function submitAnswers() {
     
     // first get all <question> elements so that correct answer, and the <form> for selected option, can be accessed
-    const questionElements = document.getElementsByTageName("question");
+    const questionElements = document.getElementsByTagName("question");
     let pts = 0;
     let possible_pts = 0;
 
