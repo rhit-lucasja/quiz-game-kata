@@ -210,12 +210,12 @@ function addQuizToPage(questions) {
             // label for the element
             const label = document.createElement("label");
             label.for = op.id;
+            // add op to label
+            label.appendChild(op);
             label.innerHTML = op.value;
 
-            // add both to the form with breaks
-            label.appendChild(op);
+            // add label to the form
             form.appendChild(label);
-            form.appendChild(document.createElement("br"));
         }
 
         // add form to question
