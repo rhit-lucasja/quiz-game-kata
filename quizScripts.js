@@ -172,9 +172,9 @@ function addQuizToPage(questions) {
         const incorrect = questions[i].incorrect_answers;
 
         // create a new question element and add relevant details to it
-        const question = document.createElement(question);
+        const question = document.createElement("question");
         quizContainer.appendChild(question);
-        
+
     }
 
 }
