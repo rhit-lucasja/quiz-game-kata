@@ -1,6 +1,18 @@
 
 
 /**
+ * Returns HTML-encoded text and returns the human text version
+ * 
+ * @param {string} text HTML-encoded text to be parsed
+ */
+function decodeHTML(text) {
+    const tempSpan = document.createElement("span");
+    span.innerHTML = text;
+    return tempSpan.value;
+}
+
+
+/**
  * Given a multiple of 10 maxNum and a reference to a <select> element, adds options
  * 20, 30, ... maxNum to the selection menu
  * @param {int} maxNum 
@@ -210,11 +222,10 @@ function addQuizToPage(questions) {
             // label for the element
             const label = document.createElement("label");
             label.for = op.id;
-            // add op to label
-            label.appendChild(op);
-            label.innerHTML = op.value;
+            label.textContent = decodeHTML(op.value);
 
             // add label to the form
+            label.appendChild(op);
             form.appendChild(label);
         }
 
@@ -321,6 +332,10 @@ async function generateQuiz() {
 }
 
 
+/**
+ * Gets the selected answers to each question and calculates the score on the quiz, before redirecting home
+ * 
+ */
 function submitAnswers() {
     
     // first get all <question> elements so that correct answer, and the <form> for selected option, can be accessed
