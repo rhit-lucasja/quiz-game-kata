@@ -145,7 +145,7 @@ async function generateQuiz() {
     //   due to this design, reloading the page will generate a new quiz every time
     const params = new URLSearchParams(window.location.search);
     const catID = params.get("catID");
-    const numQuestionsStr = params.get("numQuestions");
+    const numQuestionsStr = params.get("num");
     if (!numQuestionsStr) {
         // no numQuestions parameter is provided - so skip the quiz generation and wait for a selection to be made
         return;
@@ -159,7 +159,6 @@ async function generateQuiz() {
     }
 
     // else call API to get numQuestions questions of the category given by catID (or from any category if "any")
-    console.log("fetching from API");
     let data;
     if (catID === "any") {
         // pull questions from any category
@@ -182,11 +181,9 @@ async function generateQuiz() {
     }
 
     // handle response code properly in case of errors, then append questions to the quiz page
-    console.log("switch");
     switch (data.response_code) {
         case 0:
             // success
-            console.log("response code 0");
             alert("response code 0 but redirecting URL anyway");
             window.location.href = "https://quiz-game-kata.vercel.app/"
             break;
@@ -221,5 +218,4 @@ async function generateQuiz() {
 
 // entry point to set up num questions list once DOM loads
 setupNumQuestions();
-console.log("help");
 generateQuiz();
