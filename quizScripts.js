@@ -333,7 +333,7 @@ function submitAnswers() {
         const currentQuestion = questionElements[i];
 
         // get selected answer for currentQuestion (if any)
-        const groupName = `q${currentQuestion.num}.options`;
+        const groupName = `q${currentQuestion.num}\.options`;
         const selectedRadio = document.querySelector(`input[name=${groupName}]:checked`);
 
         // determine if selected radio value matches the correct answer
