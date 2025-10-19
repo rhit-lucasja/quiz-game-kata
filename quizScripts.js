@@ -8,7 +8,7 @@
 function decodeHTML(text) {
     const tempSpan = document.createElement("span");
     tempSpan.innerHTML = text;
-    return tempSpan.value;
+    return tempSpan.textContent;
 }
 
 
