@@ -203,8 +203,8 @@ function addQuizToPage(questions) {
             // radio button input element
             const op = document.createElement("input");
             op.type = "radio";
-            op.id = `q${i+1}.op${j}`;
-            op.name = `q${i+1}.options`;
+            op.id = `q${i+1}op${j}`;
+            op.name = `q${i+1}options`;
             op.value = answers[j];
 
             // label for the element
@@ -333,8 +333,8 @@ function submitAnswers() {
         const currentQuestion = questionElements[i];
 
         // get selected answer for currentQuestion (if any)
-        const groupName = `q${currentQuestion.num}\.options`;
-        const selectedRadio = document.querySelector(`input[name=${groupName}]:checked`);
+        const groupName = `q${currentQuestion.num}options`;
+        const selectedRadio = document.querySelector(`label input[name=${groupName}]:checked`);
 
         // determine if selected radio value matches the correct answer
         if (selectedRadio && selectedRadio.value === currentQuestion.correct) {
