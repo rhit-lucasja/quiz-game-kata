@@ -181,7 +181,37 @@ async function generateQuiz() {
     }
 
     // handle response code properly in case of errors, then append questions to the quiz page
+    switch (data.response_code) {
+        case 0:
+            // success
+            alert("response code 0 but redirecting URL anyway");
+            window.location.href = "https://quiz-game-kata.vercel.app/"
+            break;
+        case 1:
+            // no results (not enough questions)
 
+            break;
+        case 2:
+            // invalid parameter to API call
+
+            break;
+        case 3:
+            // token not found
+            
+            break;
+        case 4:
+            // token empty (questions used up; need to reset token)
+
+            break;
+        case 5:
+            // rate limit (API can only be accessed once per 5 seconds)
+            
+            break;
+        default:
+            // unknown error
+
+            break;
+    }
 
 }
 
