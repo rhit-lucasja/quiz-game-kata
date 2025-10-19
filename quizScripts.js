@@ -186,7 +186,7 @@ function addQuizToPage(questions) {
             answers.push(incorrect[1], incorrect[2]);
         }
         // shuffle answers array to appear more random
-        for (let j = answers.length - j; i > 0; j--) {
+        for (let j = answers.length - 1; i > 0; j--) {
             const k = Math.floor(Math.random() * (j + 1)); // random index
             // swap elements at j and k
             const temp = answers[j];
