@@ -186,7 +186,7 @@ function addQuizToPage(questions) {
             answers.push(incorrect[1], incorrect[2]);
         }
         // shuffle answers array to appear more random
-        for (let j = answers.length - 1; i > 0; j--) {
+        for (let j = answers.length - 1; j > 0; j--) {
             const k = Math.floor(Math.random() * (j + 1)); // random index
             // swap elements at j and k
             const temp = answers[j];
@@ -195,7 +195,6 @@ function addQuizToPage(questions) {
         }
 
         // add possible answers to quiz as form of radio buttons
-        alert("Adding question");
         const form = document.createElement("form");
         const qStatement = document.createElement("p");
         qStatement.textContent = q; // question being asked
