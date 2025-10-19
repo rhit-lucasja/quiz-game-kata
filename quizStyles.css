@@ -24,13 +24,19 @@ header {
   letter-spacing: 0.5px;
 }
 
-/* Dropdown button and Quiz Styles */
-div {
+/* select dropdown and button styles */
+#quizSetup {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 15px;
   margin-bottom: 3rem;
+}
+
+/* quiz container styles */
+#quiz {
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 /* Select dropdown styles for number of questions */
