@@ -345,8 +345,9 @@ function submitAnswers() {
 
     }
 
-    // alert with final results
-    alert(`You scored a ${pts}/${possible_pts}!`);
+    // alert with final results, then redirect to home (maybe later add functionality to see what got wrong)
+    alert(`You scored ${pts}/${possible_pts} points. Congratulations!`);
+    window.location.href = "https://quiz-game-kata.vercel.app/index.html";
 
 }
 
