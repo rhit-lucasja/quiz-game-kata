@@ -197,7 +197,7 @@ function addQuizToPage(questions) {
         // add possible answers to quiz as form of radio buttons
         const form = document.createElement("form");
         const qStatement = document.createElement("p");
-        qStatement.textContent = q; // question being asked
+        qStatement.innerHTML = q; // question being asked
         form.appendChild(qStatement);
         for (let j = 0; j < answers.length; j++) {
             // radio button input element
@@ -210,7 +210,7 @@ function addQuizToPage(questions) {
             // label for the element
             const label = document.createElement("label");
             label.for = op.id;
-            label.textContent = op.value;
+            label.innerHTML = op.value;
 
             // add both to the form with breaks
             label.appendChild(op);
