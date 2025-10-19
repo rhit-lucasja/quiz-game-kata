@@ -322,7 +322,32 @@ async function generateQuiz() {
 
 
 function submitAnswers() {
-    alert("Are you sure?");
+    
+    // first get all <question> elements so that correct answer, and the <form> for selected option, can be accessed
+    const questionElements = document.getElementsByTageName("question");
+    let pts = 0;
+    let possible_pts = 0;
+
+    for (let i = 0; i < questionElements.length; i++) {
+        
+        const currentQuestion = questionElements[i];
+
+        // get selected answer for currentQuestion (if any)
+        const groupName = `q${currentQuestion.num}.options`;
+        const selectedRadio = document.querySelector(`input[name=${groupName}]:checked`);
+
+        // determine if selected radio value matches the correct answer
+        if (selectedRadio && selectedRadio.value === currentQuestion.correct) {
+            // correct
+            pts += currentQuestion.pts;
+        }
+        possible_pts += currentQuestion.pts;
+
+    }
+
+    // alert with final results
+    alert(`You scored a ${pts}/${possible_pts}!`);
+
 }
 
 
