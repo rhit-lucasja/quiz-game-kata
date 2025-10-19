@@ -1,4 +1,4 @@
-let correctAnswers = []
+
 
 /**
  * Given a multiple of 10 maxNum and a reference to a <select> element, adds options
@@ -174,10 +174,10 @@ function addQuizToPage(questions) {
         // create a new question element and add relevant details to it
         const question = document.createElement("question");
         question.id = `q${i + 1}`;
-        question.setAttribute("num", i + 1);
-        question.setAttribute("type", type);
-        question.setAttribute("pts", pts);
-        correctAnswers.push(correct);
+        question.num = i + 1;
+        question.type = type;
+        question.pts = pts;
+        question.correct = correct;
 
         // create and shuffle list of possible answers to question
         let answers = [correct, incorrect[0]];
@@ -209,6 +209,7 @@ function addQuizToPage(questions) {
 
             // label for the element
             const label = document.createElement("label");
+            label.for = op.id;
             label.innerHTML = op.value;
 
             // add both to the form with breaks
