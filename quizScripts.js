@@ -159,6 +159,7 @@ async function generateQuiz() {
     }
 
     // else call API to get numQuestions questions of the category given by catID (or from any category if "any")
+    console.log("fetching from API");
     let data;
     if (catID === "any") {
         // pull questions from any category
@@ -220,4 +221,5 @@ async function generateQuiz() {
 
 // entry point to set up num questions list once DOM loads
 setupNumQuestions();
+console.log("help");
 generateQuiz();
