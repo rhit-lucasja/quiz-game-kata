@@ -184,6 +184,7 @@ async function generateQuiz() {
     switch (data.response_code) {
         case 0:
             // success
+            console.log("response code 0");
             alert("response code 0 but redirecting URL anyway");
             window.location.href = "https://quiz-game-kata.vercel.app/"
             break;
