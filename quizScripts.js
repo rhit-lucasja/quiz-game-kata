@@ -213,7 +213,7 @@ function addQuizToPage(questions) {
             label.textContent = op.value;
 
             // add both to the form with breaks
-            form.appendChild(op);
+            label.appendChild(op);
             form.appendChild(label);
             form.appendChild(document.createElement("br"));
         }
