@@ -136,6 +136,51 @@ function reloadWithQuizParam() {
 
 
 /**
+ * Given a list of quiz questions and details, adds the questions as interactive elements to the page
+ * 
+ * @param {list} questions list of questions, parsed from the API's json result
+ */
+function addQuizToPage(questions) {
+
+    // Quiz HTML Element (div) to which all the questions are added
+    quizContainer = document.getElementById("quiz");
+    if (!quizContainer) {
+        alert("There was a problem adding questions to the page. Redirecting to home...");
+    }
+
+    for (let i = 0; i < questions.length; i++) {
+        
+        // first get type of question (T/F vs MC)
+        const type = questions[i].type;
+
+        // get difficulty, which determines point value
+        const diff = questions[i].difficulty;
+        let pts = 0;
+        if (diff === "easy") {
+            pts = 1;
+        } else if (diff === "medium") {
+            pts = 2;
+        } else {
+            pts = 3;
+        }
+
+        // get question statement
+        const q = questions[i].question;
+
+        // get correct answer, and false answers
+        const correct = questions[i].correct_answer;
+        const incorrect = questions[i].incorrect_answers;
+
+        // create a new question element and add relevant details to it
+        const question = document.createElement(question);
+        quizContainer.appendChild(question);
+        
+    }
+
+}
+
+
+/**
  * Generates the quiz upon page setup, as long as the URL contains a parameter for number of questions
  * 
  */
@@ -183,8 +228,8 @@ async function generateQuiz() {
     // handle response code properly in case of errors, then append questions to the quiz page
     switch (data.response_code) {
         case 0:
-            // success
-            
+            // success - add HTML elements to create the quiz taker using helper function
+            addQuizToPage(data.results);
             break;
         case 1:
             // no results (not enough questions)
