@@ -184,32 +184,37 @@ async function generateQuiz() {
     switch (data.response_code) {
         case 0:
             // success
-            alert("response code 0 but redirecting URL anyway");
-            window.location.href = "https://quiz-game-kata.vercel.app/"
+            
             break;
         case 1:
             // no results (not enough questions)
-
+            alert("API responded with code 1: Not enough questions to satisfy request");
+            window.location.href = `https://quiz-game-kata.vercel.app/quiz.html?catID=${catID}`;
             break;
         case 2:
             // invalid parameter to API call
-
+            alert("API responded with code 2: Invalid parameter given to API call");
+            window.location.href = `https://quiz-game-kata.vercel.app/quiz.html?catID=${catID}`;
             break;
         case 3:
             // token not found
-            
+            alert("API responded with code 3: Token not found");
+            window.location.href = `https://quiz-game-kata.vercel.app/quiz.html?catID=${catID}`;
             break;
         case 4:
             // token empty (questions used up; need to reset token)
-
+            alert("API responded with code 4: Token needs to be reset");
+            window.location.href = `https://quiz-game-kata.vercel.app/quiz.html?catID=${catID}`;
             break;
         case 5:
             // rate limit (API can only be accessed once per 5 seconds)
-            
+            alert("API responded with code 5: Must have at least 5 seconds between API requests");
+            window.location.href = `https://quiz-game-kata.vercel.app/quiz.html?catID=${catID}`;
             break;
         default:
             // unknown error
-
+            alert("API responded with unknown error. Reloading to home page...");
+            window.location.href = `https://quiz-game-kata.vercel.app/`;
             break;
     }
 
