@@ -181,6 +181,7 @@ async function generateQuiz() {
     }
 
     // handle response code properly in case of errors, then append questions to the quiz page
+    console.log("switch");
     switch (data.response_code) {
         case 0:
             // success
