@@ -1,4 +1,4 @@
-
+let correctAnswers = []
 
 /**
  * Given a multiple of 10 maxNum and a reference to a <select> element, adds options
@@ -173,6 +173,55 @@ function addQuizToPage(questions) {
 
         // create a new question element and add relevant details to it
         const question = document.createElement("question");
+        question.id = `q${i + 1}`;
+        question.num = i + 1;
+        question.type = type;
+        question.pts = pts;
+        correctAnswers.push(correct);
+
+        // create and shuffle list of possible answers to question
+        let answers = [correct, incorrect[0]];
+        if (type === "multiple") {
+            // MC have two more possible answers than T/F
+            answers.push(incorrect[1], incorrect[2]);
+        }
+        // shuffle answers array to appear more random
+        for (let j = answers.length - j; i > 0; j--) {
+            const k = Math.floor(Math.random() * (j + 1)); // random index
+            // swap elements at j and k
+            const temp = answers[j];
+            answers[j] = answers[k];
+            answers[k] = temp;
+        }
+
+        // add possible answers to quiz as form of radio buttons
+        const form = document.createElement("form");
+        const qStatement = document.createElement("p");
+        qStatement.textContent = q; // question being asked
+        form.appendChild(qStatement);
+        for (let j = 0; j < answers.length; j++) {
+            // radio button input element
+            const op = document.createElement("input");
+            op.type = "radio";
+            op.id = `q${i+1}.op${j}`;
+            op.name = `q${i+1}.options`;
+            op.value = answers[j];
+
+            // label for the element
+            const label = document.createElement("label");
+            label.for = op.id;
+            label.textContent = op.value;
+
+            // add both to the form with breaks
+            form.appendChild(op);
+            form.appendChild(label);
+            form.appendChild(document.createElement("br"));
+        }
+
+        // add form to question
+        question.appendChild(form);
+
+        // add question to quiz
         quizContainer.appendChild(question);
 
     }
