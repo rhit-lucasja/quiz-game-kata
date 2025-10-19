@@ -226,6 +226,12 @@ function addQuizToPage(questions) {
 
     }
 
+    // add button at the end to submit the quiz
+    const submit = document.createElement("button");
+    submit.onclick = "submitAnswers()";
+    submit.textContent = "Submit";
+    quizContainer.add(submit);
+
 }
 
 
@@ -312,6 +318,11 @@ async function generateQuiz() {
             break;
     }
 
+}
+
+
+function submitAnswers() {
+    alert("Are you sure?");
 }
 
 
