@@ -141,6 +141,9 @@ question label {
   cursor: pointer;
   transition: background-color 0.2s ease;
   text-align: left;
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.4;
 }
 
 question label:hover {
@@ -154,23 +157,6 @@ question input[type="radio"] {
   margin-right: 12px;
   cursor: pointer;
   flex-shrink: 0;
-}
-
-/* Radio label text */
-question label span {
-  font-size: 1rem;
-  color: #555;
-  line-height: 1.4;
-}
-
-/* Submit button at bottom */
-button[type="submit"] {
-  min-height: 50px;
-  padding: 12px 40px;
-  font-size: 1rem;
-  margin: 30px auto 0;
-  display: block;
-  max-width: 300px;
 }
 
 /* Responsive design */
